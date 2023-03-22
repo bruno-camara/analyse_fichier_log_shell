@@ -10,11 +10,15 @@ Touver un moyen, le plus automatique possible, pour ne conserver que ce qui nous
 
 ```bash
 wget https://serpaggi-cours.pages.emse.fr/bigdata-shell/data/logs/auth.zip -d src/
-cd src
+
+unzip auth.zip
+rm auth.zip
 zgrep ssh *log *.gz > ssh.log
-ll # Vérifier la taille du fichier
+
+FILESIZE=$(stat -f%z ssh.log)
+echo "Taille du ficher : $FILESIZE bytes"
+
 gzip -9 ssh.log
-ll # Vérifier la taille du fichier résultant 
 ```
 
 La taille avant de compressé était 55681563 et la taille après la compression 4757551.
