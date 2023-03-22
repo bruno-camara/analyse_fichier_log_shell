@@ -9,13 +9,18 @@ Créer un script d’analyse de fichiers de logs d’un serveur. Ce qui intéres
 Touver un moyen, le plus automatique possible, pour ne conserver que ce qui nous sera utile ensuite.
 
 ```bash
-wget https://serpaggi-cours.pages.emse.fr/bigdata-shell/data/logs/auth.zip -d src/
+wget https://serpaggi-cours.pages.emse.fr/bigdata-shell/data/logs/auth.zip
+
+unzip auth.zip
 rm auth.zip
-cd src
-zgrep ssh *log *.gz > ssh.log
-ll # Vérifier la taille du fichier
-gzip -9 ssh.log
-ll # Vérifier la taille du fichier résultant 
+gunzip *.gz
+cat * > all_log
+rm *auth_log
+
+FILESIZE=$(stat -f%z all_log)
+echo "Taille du ficher : $FILESIZE bytes"
+
+gzip all_log
 ```
 
 La taille avant de compressé était 55681563 et la taille après la compression 4757551.
