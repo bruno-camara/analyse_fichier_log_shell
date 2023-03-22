@@ -13,14 +13,12 @@ wget https://serpaggi-cours.pages.emse.fr/bigdata-shell/data/logs/auth.zip
 
 unzip auth.zip
 rm auth.zip
-gunzip *.gz
-cat * > ssh.log
-rm *auth_log
+zgrep ssh *log *.gz > ssh.log
 
 FILESIZE=$(stat -f%z ssh.log)
 echo "Taille du ficher : $FILESIZE bytes"
 
-gzip ssh.log
+gzip -9 ssh.log
 ```
 
 La taille avant de compressé était 55681563 et la taille après la compression 4757551.
