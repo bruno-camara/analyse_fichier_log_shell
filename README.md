@@ -25,12 +25,7 @@ Proposer une méthode (sans la mettre en œuvre pour l’instant) permettant d�
 Étant donné que le nom d'utilisateur est "sacha" et le non du serveur est "miro", nous pouvons utiliser les commands suivantes:
 
 ```bash
-less ssh.log.gz | sed s/sacha/*****/g
-less ssh.log.gz | sed s/miro/****/g
-
-# Wrong
-tr 'sacha' '*****'
-tr 'miro' '****'
+less ssh.log.gz | sed s/sacha/*****/g | sed s/miro/****/g
 ```
 
 
