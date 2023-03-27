@@ -45,8 +45,10 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > Pareil au antérieur, sauf que la phrase pour prendre les utilisateurs est maintenant "Invalid user ..."
 
 -i: (†) liste des adresses IP des utilisateurs ayant réussi à se connecter
+> Pareil aux antérieurs. La différence est où nous avons coupé la ligne
 
 -I: (†) liste des adresses IP des utilisateurs rejetés
+> Idem -i
 
 -b: (†) liste des adresses IP ayant été bloquées ainsi que, à la fin, leur nombre total
 
