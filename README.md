@@ -32,6 +32,48 @@ Proposer une méthode (sans la mettre en œuvre pour l’instant) permettant d�
 less ssh.log.gz | sed s/sacha/*****/g | sed s/miro/****/g
 ```
 
+## Analyser
+Le travail qui vous est demandé a un objectif à long terme, vous décidez donc d’écrire un script qui pourra être lancé à la demande sans avoir à connaître toutes les commandes nécessaires à son fonctionnement.
+
+Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, affiche les informations suivantes en fonction des options qui lui sont passées :
+
+
+-u: (†) identifiants des utilisateurs ayant réussi à se connecter et, à la fin, leur nombre total
+> Pour identifier les utilisateurs qui ont réussi à se connecter nous utilisons le command grep pour prendre la ligne qui montre une connection réussie et le command cut pour prendre seulement le nom de l'utilisateur. La commande uniq est utilisée pour éliminer les doublons. Pour compter le nombre d'utilisateurs nous avons utilisé wc -l.
+
+-U: (†) identifiant des utilisateurs rejetés et, à la fin, leur nombre total
+
+-i: (†) liste des adresses IP des utilisateurs ayant réussi à se connecter
+
+-I: (†) liste des adresses IP des utilisateurs rejetés
+
+-b: (†) liste des adresses IP ayant été bloquées ainsi que, à la fin, leur nombre total
+
+-B: (†) liste des adresses IP ayant été bloquées, chacune suivie de son temps de blocage total
+
+-n: (†) liste des adresses IP dont les utilisateurs ont été rejetés mais qui n’ont pas été bloquées, ainsi que leur nombre total
+
+-d: durée moyenne des blocages d’adresses IP
+
+-D [IP]: (†) les dates de début et de fin des attaques émanant de l’adresse IP
+
+-f: fréquence hebdomadaire moyenne des connexions fructueuses
+
+-F: fréquence journalière moyenne des connexions infructueuses
+
+-c: donne la liste des connexions fructueuses au format CSV[2] comportant les colonnes suivantes :
+
+- **date:** date de l’événement (si l’année n’est pas précisée dans une entrée du fichier de log, c’est que c’est l’année en cours)
+
+- **ts:** timestamp de l’événement (nombre de secondes depuis le 01/01/1970)
+
+- **serveur:** nom de la machine concernée
+
+- **ip:** adresse IP d’où émane la tentative de connexion
+
+- **user:** nom d’utilisateur donné lors de la tentative de connexion
+
+-C: idem que -c mais pour les tentatives de connexion infructueuses
 
 ## Other stuff
 Get a list of user that appear in the logs
