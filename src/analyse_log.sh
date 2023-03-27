@@ -13,6 +13,12 @@ else
 		echo "Les utilisateurs qui ont reussi à se connecter sont:"
 		zgrep -o 'Accepted publickey for.*' $2 | cut -d " " -f 4 | uniq
 		echo "Le nombre d'utilisateurs qui ont reussi à se connecter est: $(zgrep -o 'Accepted publickey for.*' $2 | cut -d " " -f 4 | uniq | wc -l)"
+	elif [ $1 == "-U" ]
+	then
+		echo "Les utilisateurs qui ont été rejetés sont:"
+		zgrep -o 'Invalid user.*' $2 | cut -d " " -f 3 | uniq
+		echo "Le nombre d'utilisateurs qui ont été rejetés: $(zgrep -o 'Invalid user.*' $2 | cut -d " " -f 3 | uniq | wc -l)"
+
 	fi
 
 fi

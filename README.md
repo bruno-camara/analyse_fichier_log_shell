@@ -42,6 +42,7 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > Pour identifier les utilisateurs qui ont réussi à se connecter nous utilisons le command grep pour prendre la ligne qui montre une connection réussie et le command cut pour prendre seulement le nom de l'utilisateur. La commande uniq est utilisée pour éliminer les doublons. Pour compter le nombre d'utilisateurs nous avons utilisé wc -l.
 
 -U: (†) identifiant des utilisateurs rejetés et, à la fin, leur nombre total
+> Pareil au antérieur, sauf que la phrase pour prendre les utilisateurs est maintenant "Invalid user ..."
 
 -i: (†) liste des adresses IP des utilisateurs ayant réussi à se connecter
 
