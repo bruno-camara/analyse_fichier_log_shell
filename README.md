@@ -39,7 +39,7 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 
 
 -u: (†) identifiants des utilisateurs ayant réussi à se connecter et, à la fin, leur nombre total
-> Pour identifier les utilisateurs qui ont réussi à se connecter nous utilisons le command grep pour prendre la ligne qui montre une connection réussie et le command cut pour prendre seulement le nom de l'utilisateur. La commande uniq est utilisée pour éliminer les doublons. Pour compter le nombre d'utilisateurs nous avons utilisé wc -l.
+> Pour identifier les utilisateurs qui ont réussi à se connecter nous utilisons la commande grep pour prendre la ligne qui montre une connection réussie et la commande cut pour prendre seulement le nom de l'utilisateur. La commande sort -u est utilisée pour éliminer les doublons. Pour compter le nombre d'utilisateurs nous avons utilisé wc -l.
 
 -U: (†) identifiant des utilisateurs rejetés et, à la fin, leur nombre total
 > Pareil au antérieur, sauf que la phrase pour prendre les utilisateurs est maintenant "Invalid user ..."
@@ -51,8 +51,10 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > Idem -i
 
 -b: (†) liste des adresses IP ayant été bloquées ainsi que, à la fin, leur nombre total
+> Pour prendres les addresses IP bloquées, nous avons utilisé la commande grep avec le pattern "Blocking.\*" et le paramètre -o pour prendre seulement la partie de la ligne après le pattern. Puis, la commande cut pour couper la ligne et sort -u pour éliminer les doublons.
 
 -B: (†) liste des adresses IP ayant été bloquées, chacune suivie de son temps de blocage total
+> Pareil à -b, sauf que dans la commande cut est passé une intervalle de champs (dans notre cas 2-5)
 
 -n: (†) liste des adresses IP dont les utilisateurs ont été rejetés mais qui n’ont pas été bloquées, ainsi que leur nombre total
 
