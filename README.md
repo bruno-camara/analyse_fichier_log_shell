@@ -57,7 +57,7 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > Pareil à -b, sauf que dans la commande cut est passé une intervalle de champs (dans notre cas 2-5)
 
 -n: (†) liste des adresses IP dont les utilisateurs ont été rejetés mais qui n’ont pas été bloquées, ainsi que leur nombre total
-> Pour verifier le contenu de 2 fichiers --> Nous avons utilisé comm
+> Pour verifier le contenu de 2 fichiers nous avons utilisé comm. Alors, nous avons crée 2 fichier, 1 avec les IP rejetées et autre avec les IP bloquées
 
 -d: durée moyenne des blocages d’adresses IP
 
