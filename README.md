@@ -60,6 +60,7 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > Pour verifier le contenu de 2 fichiers nous avons utilisé comm. Alors, nous avons crée 2 fichier, 1 avec les IP rejetées et autre avec les IP bloquées
 
 -d: durée moyenne des blocages d’adresses IP
+> Utilisation de la commande bc (basic calculator). Il faut, avant d'utiliser cette commande, préparer l'équation. Pour cela, nous avons pris les temps de blocage avec grep et cut et nous remplaçons le saut de ligne par un signe plus avec la commande tr. Puis, nous avons pris le nombre de résultats donné avec la command wc -l et nous concaténons tout en une seule expression pour pouvoir utiliser la commande bc.
 
 -D [IP]: (†) les dates de début et de fin des attaques émanant de l’adresse IP
 

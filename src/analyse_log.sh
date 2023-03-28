@@ -45,6 +45,11 @@ else
 		rm ip_rejetees ip_bloquees
 		echo "$VAR"
 		echo "Le nombre de addresses IP rejetées mais pas bloquées est: $(echo "${VAR}" | wc -l)"
+	elif [ $1 == '-d' ]
+	then
+		IP=$(zgrep -o 'Blocking.*' $2 | cut -d " " -f 4)
+		OPERATION="($(echo "${IP}" | tr "\n" "+" | sed 's/.$//'))/$(echo "${IP}" | wc -l)"
+		echo "La durée moyenne des blocages d'addresses IP est: $(echo ${OPERATION} | bc) sec"
 	fi
 
 fi
