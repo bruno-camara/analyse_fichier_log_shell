@@ -36,6 +36,13 @@ else
 	then
 		echo "Les addresses IP bloquées sont:"
 		zgrep -o 'Blocking.*' $2 | cut -d " " -f 2-5 | sort -u | tr -d "\""
+	elif [ $1 == '-n' ]
+	then
+		echo "Les address IP bloquées sont:"
+		zgrep -o 'Invalid user.*' $2 | cut -d " " -f 5 | sort -u > ip_rejetees
+		zgrep -o 'Blocking.*' $2 | cut -d "\"" -f 2 | sort -u > ip_bloquees
+		comm -23 ip_rejetees ip_bloquees
+		rm ip_rejetees ip_bloquees
 	fi
 
 fi

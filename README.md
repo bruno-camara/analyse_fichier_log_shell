@@ -57,6 +57,7 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > Pareil à -b, sauf que dans la commande cut est passé une intervalle de champs (dans notre cas 2-5)
 
 -n: (†) liste des adresses IP dont les utilisateurs ont été rejetés mais qui n’ont pas été bloquées, ainsi que leur nombre total
+> Pour verifier le contenu de 2 fichiers --> Nous avons utilisé comm
 
 -d: durée moyenne des blocages d’adresses IP
 
@@ -79,6 +80,8 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 - **user:** nom d’utilisateur donné lors de la tentative de connexion
 
 -C: idem que -c mais pour les tentatives de connexion infructueuses
+
+## OBS: Utiliser getopts pour get the options from the script
 
 ## Other stuff
 Get a list of user that appear in the logs
