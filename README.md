@@ -3,6 +3,8 @@ Travail Pratique du cours de Shell. Analyse de fichier de log en utilisant shell
 
 Énoncé au lien suivant: https://serpaggi-cours.pages.emse.fr/bigdata-shell/TP-LOG.htm
 
+Auteurs: Bruno Carneiro Camara et Thales Vinícius de Lima Uchoas
+
 Créer un script d’analyse de fichiers de logs d’un serveur. Ce qui intéresse votre client ce sont les tentatives de connexion à distance à l’aide du protocole SSH. Pour cela vous disposez d’un ensemble de fichiers que vous devez traiter en ne prenant en compte que les événements liés aux tentatives de connexions.
 
 ## Ne conserver que le principal:
@@ -63,6 +65,7 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > Utilisation de la commande bc (basic calculator). Il faut, avant d'utiliser cette commande, préparer l'équation. Pour cela, nous avons pris les temps de blocage avec grep et cut et nous remplaçons le saut de ligne par un signe plus avec la commande tr. Puis, nous avons pris le nombre de résultats donné avec la command wc -l et nous concaténons tout en une seule expression pour pouvoir utiliser la commande bc.
 
 -D [IP]: (†) les dates de début et de fin des attaques émanant de l’adresse IP
+> grep avec "Attack from" et le IP passé comme paramètre. Nous avons utilisé la commande head et tail pour affichier la première et la dernière ligne. Avec cela, nous avons le début et le fin du attaque puisque le fichier base est trié par date déjà. Pour prendre seulemente la partie que nous intérèsse, la commande cut a été utilisée.
 
 -f: fréquence hebdomadaire moyenne des connexions fructueuses
 

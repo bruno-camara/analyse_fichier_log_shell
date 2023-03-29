@@ -50,6 +50,12 @@ else
 		IP=$(zgrep -o 'Blocking.*' $2 | cut -d " " -f 4)
 		OPERATION="($(echo "${IP}" | tr "\n" "+" | sed 's/.$//'))/$(echo "${IP}" | wc -l)"
 		echo "La durée moyenne des blocages d'addresses IP est: $(echo ${OPERATION} | bc) sec"
+	elif [ $1 == '-D' ]
+	then
+		PATTERN="Attack from \"$2\""
+		START=$(zgrep "$PATTERN" $3 | head -1 | cut -d " " -f 1-2)
+		END=$(zgrep "$PATTERN" $3 | tail -1 | cut -d " " -f 1-2)
+		echo "La date de début d'attaque est $START et la date de fin est $END"
 	fi
 
 fi
