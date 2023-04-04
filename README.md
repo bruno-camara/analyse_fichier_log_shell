@@ -71,6 +71,7 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > grep avec "Accepted " pour avoir les connexions fructueuses et manipulations avec les commandes cut et sed pour prendre la date. Tout cela est garder dans un fichier qui est utilisé par la commande date afin d'obtenir la semaine de l'année à laquelle la date appartient. La commande uniq -c associée à la commande sort est utilisée pour obtenir les fréquences de chaque semaine. La commande awk a été utilisée pour calculer la moyenne.
 
 -F: fréquence journalière moyenne des connexions infructueuses
+> Pareil à l'option -f. La différence est dans la commande date qu'au lieu de utiliser l'option %U, nous avons utilsé l'option %j pour prendre les jours de l'année.
 
 -c: donne la liste des connexions fructueuses au format CSV[2] comportant les colonnes suivantes :
 
