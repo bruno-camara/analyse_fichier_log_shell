@@ -66,12 +66,12 @@ else
 		fi
 	elif [ $1 == '-f' ]
 	then
-		zgrep 'Accepted publickey for' $2 | cut -d " " -f 3-6 | cut -d ":" -f 2-4 | sed 's/  / /g' | cut -d " " -f 1-2 > date_connections
+		zgrep 'Accepted publickey for' $2 | sed 's/  / /g' | cut -d " " -f 3-5 | cut -d ":" -f 2-4 | cut -d " " -f 1-2 > date_connections
 		echo "La fréquence hebdomadaire moyenne des connexions fractueuses est $(date -f date_connections "+%U" | sort | uniq -c | awk '{ total += $1; count++ } END { print total/count }')"
 		rm date_connections
 	elif [ $1 == '-F' ]
 	then
-		zgrep 'Accepted publickey for' $2 | cut -d " " -f 3-6 | cut -d ":" -f 2-4 | sed 's/  / /g' | cut -d " " -f 1-2 > date_connections
+		zgrep 'Accepted publickey for' $2 | sed 's/  / /g' | cut -d " " -f 3-5 | cut -d ":" -f 2-4 | cut -d " " -f 1-2 > date_connections
 		echo "La fréquence journalière moyenne des connexions infructueuses est $(date -f date_connections "+%j" | sort | uniq -c | awk '{ total += $1; count++ } END { print total/count }')"
 		rm date_connections
 	fi
