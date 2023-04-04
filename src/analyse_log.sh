@@ -52,10 +52,18 @@ else
 		echo "La durée moyenne des blocages d'addresses IP est: $(echo ${OPERATION} | bc) sec"
 	elif [ $1 == '-D' ]
 	then
-		PATTERN="Attack from \"$2\""
-		START=$(zgrep "$PATTERN" $3 | head -1 | cut -d " " -f 3-6 | cut -d ":" -f 2-4 | sed 's/  / /g')
-		END=$(zgrep "$PATTERN" $3 | tail -1 | cut -d " " -f 3-6 | cut -d ":" -f 2-4 | sed 's/  / /g')
-		echo "La date de début d'attaque est $START et la date de fin est $END"
+		if [[ $2 =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]
+	       	then
+			PATTERN="Attack from \"$2\""
+			START=$(zgrep "$PATTERN" $3 | head -1 | sed 's/  / /g' | cut -d " " -f 3-5 | cut -d ":" -f 2-4)
+			END=$(zgrep "$PATTERN" $3 | tail -1 | sed 's/  / /g' | cut -d " " -f 3-5 | cut -d ":" -f 2-4)
+			echo $(zgrep "$PATTERN" $3 | head -1 | cut -d " " -f 4 )
+			echo $(zgrep "$PATTERN" $3 | tail -1 | cut -d " " -f 4 )
+			echo $END
+			echo "La date de début d'attaque est $START et la date de fin est $END"
+		else
+			echo "L'adresse IP passée n'est pas valide"
+		fi
 	elif [ $1 == '-f' ]
 	then
 		zgrep 'Accepted publickey for' $2 | cut -d " " -f 3-6 | cut -d ":" -f 2-4 | sed 's/  / /g' | cut -d " " -f 1-2 > date_connections
