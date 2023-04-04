@@ -68,6 +68,7 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 > grep avec "Attack from" et le IP passé comme paramètre. Nous avons utilisé la commande head et tail pour affichier la première et la dernière ligne. Avec cela, nous avons le début et le fin du attaque puisque le fichier base est trié par date déjà. Pour prendre seulemente la partie que nous intérèsse, la commande cut a été utilisée.
 
 -f: fréquence hebdomadaire moyenne des connexions fructueuses
+> grep avec "Accepted " pour avoir les connexions fructueuses et manipulations avec les commandes cut et sed pour prendre la date. Tout cela est garder dans un fichier qui est utilisé par la commande date afin d'obtenir la semaine de l'année à laquelle la date appartient. La commande uniq -c associée à la commande sort est utilisée pour obtenir les fréquences de chaque semaine. La commande awk a été utilisée pour calculer la moyenne.
 
 -F: fréquence journalière moyenne des connexions infructueuses
 

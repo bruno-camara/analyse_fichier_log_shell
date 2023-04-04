@@ -53,9 +53,14 @@ else
 	elif [ $1 == '-D' ]
 	then
 		PATTERN="Attack from \"$2\""
-		START=$(zgrep "$PATTERN" $3 | head -1 | cut -d " " -f 1-2)
-		END=$(zgrep "$PATTERN" $3 | tail -1 | cut -d " " -f 1-2)
+		START=$(zgrep "$PATTERN" $3 | head -1 | cut -d " " -f 3-6 | cut -d ":" -f 2-4 | sed 's/  / /g')
+		END=$(zgrep "$PATTERN" $3 | tail -1 | cut -d " " -f 3-6 | cut -d ":" -f 2-4 | sed 's/  / /g')
 		echo "La date de début d'attaque est $START et la date de fin est $END"
+	elif [ $1 == '-f' ]
+	then
+		zgrep 'Accepted publickey for' $2 | cut -d " " -f 3-6 | cut -d ":" -f 2-4 | sed 's/  / /g' | cut -d " " -f 1-2 > date_connections
+		echo "La fréquence hebdomadaire moyenne des connexions fractueuses est $(date -f date_connections "+%U" | sort | uniq -c | awk '{ total += $1; count++ } END { print total/count }')"
+		rm date_connections
 	fi
 
 fi
