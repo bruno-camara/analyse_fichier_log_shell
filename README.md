@@ -88,12 +88,3 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 -C: idem que -c mais pour les tentatives de connexion infructueuses
 
 ## OBS: Utiliser getopts pour get the options from the script
-
-## Other stuff
-Get a list of user that appear in the logs
-```bash
-zgrep -o 'Invalid user.*' ssh.log.gz | cut -d " " -f 3 | uniq > users.txt
-zgrep -o 'Connection closed by invalid user.*' ssh.log.gz | cut -d " " -f 6 | uniq >> users.txt
-zgrep -o 'Accepted publickey for.*' ssh.log.gz | cut -d " " -f 4 | uniq >> users.txt
-```
-
