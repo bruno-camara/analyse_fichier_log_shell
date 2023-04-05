@@ -74,6 +74,17 @@ else
 		zgrep 'Accepted publickey for' $2 | sed 's/  / /g' | cut -d " " -f 3-5 | cut -d ":" -f 2-4 | cut -d " " -f 1-2 > date_connections
 		echo "La fréquence journalière moyenne des connexions infructueuses est $(date -f date_connections "+%j" | sort | uniq -c | awk '{ total += $1; count++ } END { print total/count }')"
 		rm date_connections
+	elif [ $1 == "-c" ]
+	then
+
+		zgrep 'Accepted publickey for' $2 | sed 's/  / /g' | cut -d " " -f 3-5 | cut -d ":" -f 2-4 > date_connections
+		date -f date_connections "+%s" > date_ts
+		date -f date_connections "+%Y-%m-%d %H:%M:%S" > date_formated
+		zgrep 'Accepted publickey for' $2 | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'> serveur	
+		zgrep 'Accepted publickey for' $2 | sed 's/  / /g' | cut -d " " -f 11 > users
+		echo 'date,ts,serveur,ip,user' > connexions_fructueuses.csv
+		paste date_formated date_ts serveur users -d "," >> connexions_fructueuses.csv
+		rm date_connections date_ts date_formated serveur users
 	fi
 
 fi
