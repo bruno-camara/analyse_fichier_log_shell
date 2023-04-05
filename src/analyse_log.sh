@@ -85,6 +85,16 @@ else
 		echo 'date,ts,serveur,ip,user' > connexions_fructueuses.csv
 		paste date_formated date_ts serveur users -d "," >> connexions_fructueuses.csv
 		rm date_connections date_ts date_formated serveur users
+	elif [ $1 == '-C' ]
+	then
+		zgrep 'Invalid user' $2 | sed 's/  / /g' | cut -d " " -f 3-5 | cut -d ":" -f 2-4 > date_connections
+                date -f date_connections "+%s" > date_ts
+                date -f date_connections "+%Y-%m-%d %H:%M:%S" > date_formated
+                zgrep 'Invalid user' $2 | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'> serveur
+                zgrep 'Invalid user' $2 | sed 's/  / /g' | cut -d " " -f 10 > users
+                echo 'date,ts,serveur,ip,user' > connexions_infructueuses.csv
+                paste date_formated date_ts serveur users -d "," | sort -u >> connexions_infructueuses.csv
+                rm date_connections date_ts date_formated serveur users
 	fi
 
 fi
