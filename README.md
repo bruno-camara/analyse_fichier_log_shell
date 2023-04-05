@@ -86,5 +86,3 @@ Créez un script qui, à partir d’un fichier comme celui obtenu au dessus, aff
 - **user:** nom d’utilisateur donné lors de la tentative de connexion
 
 -C: idem que -c mais pour les tentatives de connexion infructueuses
-
-## OBS: Utiliser getopts pour get the options from the script
