@@ -3,7 +3,7 @@ Travail Pratique du cours de Shell. Analyse de fichier de log en utilisant shell
 
 Énoncé au lien suivant: https://serpaggi-cours.pages.emse.fr/bigdata-shell/TP-LOG.htm
 
-Auteurs: Bruno Carneiro Camara et Thales Vinícius de Lima Uchoas
+Auteurs: Bruno Carneiro Camara et Thales Vinicius de Lima Uchoas
 
 Créer un script d’analyse de fichiers de logs d’un serveur. Ce qui intéresse votre client ce sont les tentatives de connexion à distance à l’aide du protocole SSH. Pour cela vous disposez d’un ensemble de fichiers que vous devez traiter en ne prenant en compte que les événements liés aux tentatives de connexions.
 
